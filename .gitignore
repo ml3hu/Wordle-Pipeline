@@ -1,0 +1,13 @@
+tweets.csv
+.env
+.ipynb_checkpoints
+__pycache__
+data
+logs
+plugins
+scripts
+spark_script.ipynb
+*.txt
+*.json
+.terraform*
+*.tfstate
