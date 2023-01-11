@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: staging
     database: wordle-pipeline
-    schema: wordle_data_al
+    schema: wordle_data_all
 
     tables:
       - name: tweets_data
