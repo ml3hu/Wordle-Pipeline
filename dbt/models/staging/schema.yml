@@ -1,0 +1,244 @@
+version: 2
+
+sources:
+  - name: staging
+    database: wordle-pipeline
+    schema: wordle_data_all
+
+    tables:
+      - name: tweets_data
+      - name: solutions_data
+
+
+models:
+    - name: stg_solutions_data
+      description: >
+        The New York Times (NYT) Wordle solution set.
+        The solutions are aligned with the NYT solutions which diverge 
+        from the original Wordle game that the NYT acquired licensing from.
+      columns:
+        - name: wordle_id
+          description: primary key and wordle number
+          tests:
+            - unique:
+                severity: warn
+            - not_null:
+                severity: warn
+        - name: wordle_date
+          description: The date corresponding to the wordle solution
+          tests:
+            - unique:
+                severity: warn
+            - not_null:
+                severity: warn
+        - name: solution
+          description: 5 letter solution for the Wordle
+          tests:
+            - not_null:
+                severity: warn
+    - name: stg_tweets_data
+      description: >
+        Tweets of Wordle solutions that start with the standard
+        Wordle sharing format from NYT. The tweet content is
+        extracted for data relevent to each user's guess
+      columns:
+        - name: tweet_id
+          description: id of Twitter post
+          tests:
+            - unique:
+                severity: warn
+            - not_null:
+                severity: warn
+        - name: wordle_id
+          description: The corresponding wordle number for the tweet
+          tests:
+            - not_null:
+                severity: warn
+        - name: tweet_username
+          description: Twitter username
+          tests:
+            - not_null:
+                severity: warn
+        - name: tweet_datetime
+          description: timestamp of tweet
+        - name: attempt_count
+          description: Number of attempts made for the Wordle
+        - name: has_guess1
+          description: Whether the first attempt contains a guess.
+        - name: has_guess2
+          description: Whether the second attempt contains a guess.
+        - name: has_guess3
+          description: Whether the third attempt contains a guess.
+        - name: has_guess4
+          description: Whether the fourth attempt contains a guess.
+        - name: has_guess5
+          description: Whether the fifth attempt contains a guess.
+        - name: has_guess6
+          description: Whether the sixth attempt contains a guess.
+        - name: guess1
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess1_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess1_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess1_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess2
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess2_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess2_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess2_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess3
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess3_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess3_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess3_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess4
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess4_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess4_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess4_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess5
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess5_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess5_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess5_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess6
+          description: text representation of guess
+          tests:
+            - not_null:
+                severity: warn
+        - name: guess6_incorrect
+          description: number of letters in incorrect location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess6_wrong_spot
+          description: number of letters in different location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+        - name: guess6_correct
+          description: number of letters in correct location
+          tests:
+            - accepted_values:
+                values: "{{ var('wordle_num_values') }}"
+                severity: warn
+                quote: false
+            
+        
+        
+            
+
+            
+
+        
+
+
+
