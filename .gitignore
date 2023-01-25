@@ -11,3 +11,5 @@ spark_script.ipynb
 *.json
 .terraform*
 *.tfstate
+
+output
