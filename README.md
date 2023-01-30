@@ -2,8 +2,10 @@
 [Dashboard](https://datastudio.google.com/reporting/1cdb0ff2-abfb-447d-afea-8d256f4edf54)
 
 A data pipeline modeling New York Time's (NYT) Wordle data from Twitter posts.
+Despite Wordle existing as a game for many years, a perfect strategy to beat the game each day has yet to be discovered. 
+This project aims to provide a data-driven approach to the game by analyzing Twitter posts of Wordle scores.
 
-The Project serves as an opportunity to develop skills including Python, Airflow, Docker, Spark, DBT, and GCP tools
+The project also serves as an opportunity to develop skills including Python, Airflow, Docker, Spark, DBT, and GCP tools
 
 
 ## Architecture
